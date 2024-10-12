@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="DarkSouls, Elden Ring, Souls, FromSoftware, Dificil, Souls Like,terapia">
+    <meta name="description" content="Entra a la pagina web para descubrir por que los Souls son terapia">
+    <link rel="stylesheet" href="terapia.css">
+    <script src="form.js" defer></script>
+    <title>SoulsLike</title>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="./origen.html">Origen y Evolución del Género</a>
+            <a href="./index.html">Inicio</a>
+            <a href="./gameplay.html">Gameplay</a>
+            <a href="./elmejorsouls.html">La Cúspide del Género</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section>
+            <h2>Los Soulslike como Forma de Terapia</h2>
+            <article>
+                <h3>1. Superación de Desafíos</h3>
+                <p>Los <em>soulslike</em> son conocidos por su dificultad extrema; sin embargo, superar estos desafíos puede ser profundamente satisfactorio y fortalecer la resiliencia...</p>
+            </article>
+            <article>
+                <h3>2. Sentido de Logro</h3>
+                <p>Cada victoria, ya sea derrotar a un jefe o simplemente llegar a un nuevo punto de control brinda un fuerte sentido de logro...</p>
+            </article>
+            <article>
+                <h3>3. Aprendizaje a través del Fracaso</h3>
+                <p>Los <em>soulslike</em> enseñan que el fracaso no es el final, sino una oportunidad para aprender...</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Contacto con el Terapeuta</h2>
+            <p>Si deseas contactar a un terapeuta para recibir apoyo o hacer una consulta, por favor completa el siguiente formulario.</p>
+        
+            <form id="contactForm">
+                <fieldset>
+                    <legend>Información Personal</legend>
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <span id="nameError" class="error"></span><br>
+
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span id="emailError" class="error"></span><br>
+
+                    <label for="telefono">Número de Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono">
+                    <span id="phoneError" class="error"></span>
+                </fieldset>
+
+                <button type="submit">Enviar Consulta</button>
+            </form>
+
+            <p id="formMessage"></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <address>
+            <p>&copy; 2024 Souls Enthusiasts. Todos los derechos reservados.</p>
+            <p>Síguenos en <a href="https://twitter.com/soulsenthusiasts" target="_blank">Twitter</a> y <a href="https://www.instagram.com/soulsenthusiasts" target="_blank">Instagram</a>.</p>
+        </address>
+    </footer>
+
+    <script>
+        // Interacción con el usuario
+        let experience = prompt("¿Qué nivel de experiencia tienes con los juegos Souls? (Principiante, Intermedio, Avanzado)").toLowerCase();
+        let welcomeMessage;
+
+        switch (experience) {
+            case 'principiante':
+                welcomeMessage = "¡Bienvenido principiante! Prepárate para enfrentarte a grandes desafíos.";
+                break;
+            case 'intermedio':
+                welcomeMessage = "¡Hola jugador intermedio! Sabes lo que te espera, pero aún hay mucho por dominar.";
+                break;
+            case 'avanzado':
+                welcomeMessage = "¡Saludamos al experto! Ya eres un guerrero experimentado de los Souls.";
+                break;
+            default:
+                welcomeMessage = "¡Bienvenido! Cualquier nivel de experiencia es válido para disfrutar de los Soulslike.";
+                break;
+        }
+        alert(welcomeMessage);
+
+        // Validaciones del formulario
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // Validación de nombre
+            const nameInput = document.getElementById("nombre");
+            const nameError = document.getElementById("nameError");
+            if (nameInput.value.trim() === "") {
+                nameError.textContent = "El nombre es obligatorio.";
+                isValid = false;
+            } else {
+                nameError.textContent = "";
+            }
+
+            // Validación de email
+            const emailInput = document.getElementById("email");
+            const emailError = document.getElementById("emailError");
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.textContent = "Por favor, introduce un correo electrónico válido.";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+
+            // Validación de teléfono (opcional)
+            const phoneInput = document.getElementById("telefono");
+            const phoneError = document.getElementById("phoneError");
+            const phonePattern = /^[0-9]{10}$/;  // Acepta 10 dígitos
+            if (phoneInput.value && !phonePattern.test(phoneInput.value)) {
+                phoneError.textContent = "El número de teléfono debe tener 10 dígitos.";
+                isValid = false;
+            } else {
+                phoneError.textContent = "";
+            }
+
+            // Si todo es válido, enviar el formulario
+            if (isValid) {
+                document.getElementById("formMessage").textContent = "Formulario enviado correctamente.";
+            }
+        });
+    </script>
+</body>
+</html>
