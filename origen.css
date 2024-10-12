@@ -6,7 +6,8 @@
 
 .header nav {
     display: grid;
-    grid-template-columns: repeat(4, auto); /* Crea una columna para cada enlace */
+    grid-template-columns: repeat(5, auto); /* Crea una columna para cada enlace */
+
     gap: 30px; /* Ajusta este valor para controlar el espacio entre los enlaces */
     text-decoration: none;
 }
